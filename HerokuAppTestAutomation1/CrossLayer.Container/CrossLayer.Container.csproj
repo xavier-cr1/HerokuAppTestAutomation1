@@ -7,4 +7,12 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="BoDi" Version="1.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\APILayer.Client\APILayer.Client.csproj" />
+  </ItemGroup>
+
 </Project>
