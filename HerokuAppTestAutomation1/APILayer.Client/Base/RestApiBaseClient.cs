@@ -31,7 +31,9 @@ namespace APILayer.Client.Base
 
             if(!response.IsSuccessful)
             {
-                return new RestResponse<T>() { ErrorMessage = response.ErrorMessage, StatusCode = response.StatusCode };
+                this._specFlowOutputHelper.WriteLine($"Unsuccesful sending async {restRequest.Method} request to url: {BaseServiceBaseUrl + restRequest.Resource}." +
+                    $"error: {response.ErrorMessage}, ex: {response.ErrorException}");
+                return new RestResponse<T>() { StatusCode = response.StatusCode };
             }
             else
             {
