@@ -36,10 +36,16 @@ namespace UserStories.AcceptanceTests
         private void RegisterConfigurationToObjectContainer()
         {
             var configurationRoot = new ConfigurationBuilder()
-                .AddJsonFile("appSettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .Build();
-            
-            objectContainer.RegisterInstanceAs(configurationRoot);
+
+            var environment = configurationRoot.GetSection("AppConfiguration")["Environment"];
+
+            var configurationEnvironment = new ConfigurationBuilder()
+                .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
+                .Build();
+
+            this.objectContainer.RegisterInstanceAs(configurationEnvironment);
         }
 
         private void RegisterAppContainerToObjectContainer()
