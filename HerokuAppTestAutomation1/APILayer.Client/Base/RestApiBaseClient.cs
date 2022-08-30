@@ -40,5 +40,23 @@ namespace APILayer.Client.Base
                 return response;
             }
         }
+
+        protected async Task<RestResponse> SendRestRequestAsync<T>(RestRequest restRequest, T item)
+        {
+            this._specFlowOutputHelper.WriteLine($"Sending async {restRequest.Method} request to url: {BaseServiceBaseUrl + restRequest.Resource}, with item: {item}");
+
+            var response = await this._restClient.ExecuteAsync(restRequest);
+
+            if (!response.IsSuccessful)
+            {
+                this._specFlowOutputHelper.WriteLine($"Unsuccesful sending async {restRequest.Method} request to url: {BaseServiceBaseUrl + restRequest.Resource}." +
+                    $"error: {response.ErrorMessage}, ex: {response.ErrorException}");
+                return new RestResponse() { StatusCode = response.StatusCode };
+            }
+            else
+            {
+                return response;
+            }
+        }
     }
 }

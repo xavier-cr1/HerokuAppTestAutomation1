@@ -1,5 +1,6 @@
 ﻿using APILayer.Client.Base;
 using APILayer.Client.Contracts;
+using APILayer.Entities;
 using APILayer.Entities.PersonServices;
 using Microsoft.Extensions.Configuration;
 using RestSharp;
@@ -23,6 +24,15 @@ namespace APILayer.Client
             var request = new RestRequest(peopleAttribute, Method.Get);
 
             return await this.SendRestRequestAsync<BasicPeopleResponse>(request);
+        }
+
+        public async Task<RestResponse> PostBasicPeopleResponse(People people)
+        {
+            var request = new RestRequest(peopleAttribute, Method.Post);
+
+            request.AddJsonBody(people);
+
+            return await this.SendRestRequestAsync(request, people);
         }
     }
 }

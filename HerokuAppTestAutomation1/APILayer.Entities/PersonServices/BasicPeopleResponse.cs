@@ -7,6 +7,6 @@ namespace APILayer.Entities.PersonServices
 {
     public class BasicPeopleResponse
     {
-        public List<string>? Names { get; set; }
+        public List<People> People { get; set; }
     }
 }

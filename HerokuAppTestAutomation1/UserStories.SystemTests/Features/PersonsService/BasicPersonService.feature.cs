@@ -80,16 +80,16 @@ namespace UserStories.SystemTests.Features.PersonsService
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Get people from express server")]
+        [Xunit.SkippableFactAttribute(DisplayName="Create and get a person from express server")]
         [Xunit.TraitAttribute("FeatureTitle", "BasicPersonService")]
-        [Xunit.TraitAttribute("Description", "Get people from express server")]
+        [Xunit.TraitAttribute("Description", "Create and get a person from express server")]
         [Xunit.TraitAttribute("Category", "Type:API")]
-        public virtual void GetPeopleFromExpressServer()
+        public virtual void CreateAndGetAPersonFromExpressServer()
         {
             string[] tagsOfScenario = new string[] {
                     "Type:API"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get people from express server", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Create and get a person from express server", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -110,13 +110,25 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name",
+                            "Age"});
+                table1.AddRow(new string[] {
+                            "Jerome",
+                            "25"});
 #line 5
+ testRunner.Given("The user posts a new person with the following properties", ((string)(null)), table1, "Given ");
+#line hidden
+#line 8
+ testRunner.Then("The rest response should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 9
  testRunner.Given("The user requests a list of people from express server", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 6
- testRunner.Then("The response should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 10
+ testRunner.Then("The rest basic people response should be \'200\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 7
+#line 11
  testRunner.And("The people in the list should not be empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
